@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 //配置路由
 import Login from "@/components/login/login.vue"
-import Name from "@/components/name/name.vue"
+import Name from "@/components/name/home.vue"
 
 Vue.use(Router)
 
