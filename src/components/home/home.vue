@@ -26,6 +26,7 @@
       <el-aside width="200px">
         <!-- 1 -->
         <el-menu
+          :router="true"
           :unique-opened="true"
         >
           <el-submenu index="1">
@@ -34,7 +35,7 @@
               <span>用户管理</span>
             </template>
 
-            <el-menu-item index="1-1">
+            <el-menu-item index="user">
               <i class="el-icon-menu"></i>
               <span slot="title">用户列表</span>
             </el-menu-item>
@@ -106,7 +107,7 @@
       </el-aside>
       <!-- 内容 -->
       <el-main>
-        
+        <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -119,7 +120,7 @@ export default {
     if (!token) {
       this.$router.push({ name: "login" });
     }
-    console.log(1);
+    // console.log(1);
   },
   //方法
   methods:{
