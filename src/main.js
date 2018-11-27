@@ -13,6 +13,9 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
+//引入axios
+import Axios from "@/$axios/http.js"
+Vue.use(Axios)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

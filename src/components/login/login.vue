@@ -6,9 +6,9 @@
         <el-input v-model="fordata.username"></el-input>
       </el-form-item>
       <el-form-item label="密码">
-        <el-input v-model="fordata.passworld"></el-input>
+        <el-input v-model="fordata.password"></el-input>
       </el-form-item>
-      <el-button id="btn" type="primary">登陆</el-button>
+      <el-button id="btn" type="primary" @click.prevent="login">登陆</el-button>
     </el-form>
   </div>
 </template>
@@ -21,6 +21,27 @@ export default {
                 username: '',
                 passworld:''
             }
+        }
+    },
+    //方法
+    methods:{
+        async login () {
+            const res = await this.$http.post(`login`,this.fordata)
+                console.log(res)
+                const {data,meta:{msg,status}} = res.data
+                if(status === 200) {
+                    //获取
+                    sessionStorage.setItem('token',data.token)
+                    //跳转
+                    this.$router.push({name:'home'})
+                    //成功提示
+                    this.$message.success(msg)
+                }else{
+                    this.$message.error(msg);
+                }
+ 
+
+
         }
     }
 }
