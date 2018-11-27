@@ -1,6 +1,23 @@
 <template>
   <el-container class="container">
-    <el-header>Header</el-header>
+    <!-- 头部 -->
+    <el-header>
+      <el-row>
+        <el-col :span="10">
+          <div class="grid-content bg-purple"><img src="../../assets/logo.png" alt></div>
+        </el-col>
+        <el-col :span="12">
+          <div class="grid-content bg-purple-light"><h3>电商后台管理系统</h3></div>
+        </el-col>
+        <el-col :span="2">
+          <div class="grid-content bg-purple"><a href class="loginout">退出</a></div>
+        </el-col>
+      </el-row>
+      
+      
+      
+    </el-header>
+
     <el-container>
       <el-aside width="200px">Aside</el-aside>
       <el-main>Main</el-main>
@@ -10,41 +27,35 @@
 
 <script>
 export default {
-  beforeCreate: {
-    If() {
-      const token = sessionStorage.getItem("token");
-      if (!token) {
-        this.$router.push({ name: "login" });
-      }
+  beforeCreate() {
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      this.$router.push({ name: "login" });
     }
+    console.log(1);
   }
 };
 </script>
 
 <style>
-.container{
+.container {
   height: 100%;
 }
 .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    background-color: #D3DCE6;
-    color: #333;
-    text-align: center;
-    line-height: 200px;
-  }
-  
-  .el-main {
-    background-color: #E9EEF3;
-    color: #333;
-    text-align: center;
-    line-height: 160px;
-  }
- 
- 
+  background-color: #b3c0d1;
+}
+
+.loginout {
+  line-height: 60px;
+  text-decoration: none;
+  color: #000;
+}
+
+.el-aside {
+  background-color: #d3dce6;
+}
+
+.el-main {
+  background-color: #e9eef3;
+}
 </style>
