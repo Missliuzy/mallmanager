@@ -15,8 +15,15 @@ Vue.config.productionTip = false
 
 //引入axios
 import Axios from "@/$axios/http.js"
+import moment from 'moment';
 Vue.use(Axios)
 /* eslint-disable no-new */
+//过滤器  时间
+Vue.filter('clearTime', v => {
+  return moment(v).format('YYYY-MM-DD')
+})
+
+
 new Vue({
   el: '#app',
   router,
