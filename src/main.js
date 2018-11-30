@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 //引入element-ui 
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+//公共组件
+import breadcrumb from '@/components/publicComponents/breadcrumb.vue'
 
 //引入css
 import "@/assets/css/base.css"
@@ -22,7 +24,8 @@ Vue.use(Axios)
 Vue.filter('clearTime', v => {
   return moment(v).format('YYYY-MM-DD')
 })
-
+//引用全局组件
+Vue.component('bread-crumb',breadcrumb)
 
 new Vue({
   el: '#app',
