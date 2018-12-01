@@ -15,7 +15,7 @@
         </el-col>
         <el-col :span="2">
           <div class="grid-content bg-purple">
-            <a @click="loginout()" class="loginout">退出</a>
+            <a @click.prevent="loginout()" class="loginout">退出</a>
           </div>
         </el-col>
       </el-row>
@@ -29,80 +29,20 @@
           :router="true"
           :unique-opened="true"
         >
-          <el-submenu index="1">
+          <el-submenu :index="''+item.order" v-for="(item,index) in list" :key="index">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>用户管理</span>
+              <span>{{item.authName}}</span>
             </template>
 
-            <el-menu-item index="user">
+            <el-menu-item :index="item1.path" v-for="(item1,index) in item.children" :key="index">
               <i class="el-icon-menu"></i>
-              <span slot="title">用户列表</span>
+              <span>{{item1.authName}}</span>
             </el-menu-item>
           </el-submenu>
         
-        <!-- 2 -->
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>权限管理</span>
-            </template>
-            <el-menu-item index="cos">
-              <i class="el-icon-menu"></i>
-              <span slot="title">角色类表</span>
-            </el-menu-item>
-            <el-menu-item index="right">
-              <i class="el-icon-menu"></i>
-              <span slot="title">权限类表</span>
-            </el-menu-item>
-          </el-submenu>
         
-        <!-- 3 -->
-       
-          <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>商品管理</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              <span slot="title">商品列表</span>
-            </el-menu-item>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              <span slot="title">分类参数</span>
-            </el-menu-item>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              <span slot="title">商品分类</span>
-            </el-menu-item>
-          </el-submenu>
-      
-        <!-- 4 -->
-        
-          <el-submenu index="4">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>订单管理</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              <span slot="title">订单类表</span>
-            </el-menu-item>
-          </el-submenu>
-        
-        <!-- 5 -->
-        
-          <el-submenu index="5">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>数据统计</span>
-            </template>
-            <el-menu-item index="1-1">
-              <i class="el-icon-menu"></i>
-              <span slot="title">数据报表</span>
-            </el-menu-item>
-          </el-submenu>
+          
         </el-menu>
       </el-aside>
       <!-- 内容 -->
@@ -115,15 +55,31 @@
 
 <script>
 export default {
-  beforeCreate() {
-    const token = sessionStorage.getItem("token");
-    if (!token) {
-      this.$router.push({ name: "login" });
+  data () {
+    return {
+      list:[]  
     }
+  },
+  beforeCreate() {
+    // const token = sessionStorage.getItem("token");
+    // if (!token) {
+    //   this.$router.push({ name: "login" });
+    // }
     // console.log(1);
+  },
+  created () {
+    this.getmenus()
   },
   //方法
   methods:{
+    //获取左侧边栏
+    async getmenus () {
+      const res = await this.$http.get(`menus`)
+      // console.log(res)
+      this.list = res.data.data
+      // console.log(this.list)
+
+    },
     //退出功能
     loginout () {
       //清除token

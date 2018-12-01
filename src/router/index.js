@@ -9,7 +9,7 @@ import Cos from "@/components/right/cos.vue"
 
 Vue.use(Router)
 
-export default new Router({
+var router = new Router({
     routes:[{
         name:'login',
         path:'/login',
@@ -19,20 +19,34 @@ export default new Router({
         path:'/',
         component: Home,
         children:[{
-            name:'user',
-            path:'user',
+            name:'users',
+            path:'users',
             component: Users
         },{
-            name:'right',
-            path:'right',
+            name:'rights',
+            path:'rights',
             component: Right
         },{
-            name:'cos',
-            path:'cos',
+            name:'roles',
+            path:'roles',
             component: Cos
         }]
     }]
 })
-
-
+router.beforeEach((to, from, next) => {
+    // ...
+    // console.log(to)
+    // console.log(from)
+    // console.log(next)
+    if(to.path == '/login'){
+        next()
+    }else{
+        const token = sessionStorage.getItem('token')
+        if(!token) {
+            router.push({name: 'login'})
+        }
+    }
+    next()
+  })
+export default router
 

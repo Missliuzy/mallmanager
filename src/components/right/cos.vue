@@ -121,6 +121,7 @@ export default {
         const list = [...list1,...list2]
         const res = await this.$http.post(`roles/${this.cosId}/rights`,{rids:list.join(',')})
         this.$message.success(res.data.meta.msg)
+        this.getdata()
         
       },
     //修改权限
@@ -144,7 +145,7 @@ export default {
                     })
                 })
             })
-            console.log(arrData)
+            // console.log(arrData)
             this.arrcheck = arrData
     },
       //取消权限
@@ -158,7 +159,7 @@ export default {
     async getdata() {
       const res = await this.$http.get(`roles`);
 
-      console.log(res);
+      // console.log(res);
       const {
         data,
         meta: { msg, status }
