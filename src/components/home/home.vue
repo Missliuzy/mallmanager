@@ -47,7 +47,7 @@
               <i class="el-icon-location"></i>
               <span>权限管理</span>
             </template>
-            <el-menu-item index="1-1">
+            <el-menu-item index="cos">
               <i class="el-icon-menu"></i>
               <span slot="title">角色类表</span>
             </el-menu-item>

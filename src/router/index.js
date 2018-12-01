@@ -5,6 +5,7 @@ import Login from "@/components/login/login.vue"
 import Home from "@/components/home/home.vue"
 import Users from "@/components/users/user.vue"
 import Right from "@/components/right/right.vue"
+import Cos from "@/components/right/cos.vue"
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ export default new Router({
             name:'right',
             path:'right',
             component: Right
+        },{
+            name:'cos',
+            path:'cos',
+            component: Cos
         }]
     }]
 })

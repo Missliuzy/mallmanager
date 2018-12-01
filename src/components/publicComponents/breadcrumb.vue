@@ -1,8 +1,8 @@
 <template>
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>{{data1}}</el-breadcrumb-item>
-      <el-breadcrumb-item>{{data2}}</el-breadcrumb-item>
+      <el-breadcrumb-item>{{dataOne}}</el-breadcrumb-item>
+      <el-breadcrumb-item>{{dataTwo}}</el-breadcrumb-item>
     </el-breadcrumb>
 </template>
 
@@ -13,7 +13,7 @@ export default {
         return {
         }
     },
-    props: ['data1','data2']
+    props: ['dataOne','dataTwo']
 }
 </script>
 

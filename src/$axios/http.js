@@ -13,7 +13,7 @@ MyHttpServer.install = Vue => {
 
             // 需要授权的 API ，必须在请求头中使用 Authorization 字段提供 token 令牌
             const AUTH_TOKEN = sessionStorage.getItem("token");
-            axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+            config.headers.common["Authorization"] = AUTH_TOKEN;
         }
         return config;
     }, function (error) {
