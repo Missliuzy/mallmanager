@@ -1,6 +1,6 @@
 <template>
   <el-card class="main" >
-    <bread-crumb data1="用户管理" data2="权限列表"></bread-crumb>
+    <bread-crumb dataOne="用户管理" dataTwo="权限列表"></bread-crumb>
     <el-table :data="rightList" style="width: 100%" height="510px">
       <el-table-column type="index" width="50"></el-table-column>
       <el-table-column property="authName" label="权限名称" width="120"></el-table-column>

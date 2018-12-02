@@ -6,6 +6,8 @@ import Home from "@/components/home/home.vue"
 import Users from "@/components/users/user.vue"
 import Right from "@/components/right/right.vue"
 import Cos from "@/components/right/cos.vue"
+import God from "@/components/comman/goods.vue"
+import GodAdd from "@/components/comman/addgood.vue"
 
 Vue.use(Router)
 
@@ -30,6 +32,14 @@ var router = new Router({
             name:'roles',
             path:'roles',
             component: Cos
+        },{
+            name:'goods',
+            path:'goods',
+            component: God
+        },{
+            name:'goods/add',
+            path:'goods/add',
+            component: GodAdd
         }]
     }]
 })

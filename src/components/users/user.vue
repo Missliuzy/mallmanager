@@ -1,10 +1,6 @@
 <template>
   <el-card class="main">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-      <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    <bread-crumb dataOne="用户管理" dataTwo="用户列表"></bread-crumb>
     <!-- //搜索 -->
     <el-row style="margin-top: 20px;">
       <el-col>
